@@ -31,7 +31,7 @@ func TestDrmfilterHandlerError(t *testing.T) {
 	bs, err := ioutil.ReadAll(resp.Body)
 	assert.Nil(t, err)
 	assert.Equal(t, `{
-	"error": "EOF"
+	"error": "Could not decode request"
 }
 `, string(bs))
 }

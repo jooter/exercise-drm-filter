@@ -28,7 +28,7 @@ func DrmfilterHandler(w http.ResponseWriter, r *http.Request) {
 	err := dec.Decode(&req)
 	if err != nil {
 		fmt.Println(err)
-		errorResponse(w, err.Error())
+		errorResponse(w, "Could not decode request")
 		return
 	}
 
