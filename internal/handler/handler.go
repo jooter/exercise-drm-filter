@@ -14,6 +14,8 @@ type ErrorResponse struct {
 }
 
 func DrmfilterHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "application/json")
+
 	if r.Method != http.MethodPost {
 		msg := "un-supported request method"
 		log.Println(msg)

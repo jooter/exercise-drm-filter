@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	log.SetFlags(log.Lshortfile | log.Ldate | log.Ltime)
+
 	http.HandleFunc("/", handler.DrmfilterHandler)
 	port := os.Getenv("PORT")
 	if port == "" {
