@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/jooter/exercise-drm-filter/internal/handler"
 )
 
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", handler.DrmfilterHandler)
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Println("default port will be used")
@@ -16,9 +17,5 @@ func main() {
 	}
 	addr := ":" + port
 	log.Println("listen to", addr)
-	http.ListenAndServe(addr, nil)
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "hello")
+	log.Fatalln(http.ListenAndServe(addr, nil))
 }
